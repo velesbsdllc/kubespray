@@ -23,13 +23,14 @@ contrib/terraform/aws/credentials.tfvars
 *~
 vagrant/
 plugins/mitogen
+##vbai env
 
 # Ansible inventory
 inventory/*
 !inventory/local
 !inventory/sample
 inventory/*/artifacts/
-
+!vbai*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -120,3 +121,5 @@ tmp.md
 # Ansible collection files
 kubernetes_sigs-kubespray*tar.gz
 ansible_collections
+
+
