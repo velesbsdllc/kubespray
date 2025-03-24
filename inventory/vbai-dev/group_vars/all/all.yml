@@ -143,4 +143,7 @@ ipv4_stack: true
 # Configure IPv6 Stack networking
 ipv6_stack: false
 
+# Kubernetes internal network for services
+kube_service_addresses: 10.233.0.0/18
+
 # Helm deployment
