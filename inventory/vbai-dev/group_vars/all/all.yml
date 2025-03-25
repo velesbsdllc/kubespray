@@ -137,13 +137,3 @@ unsafe_show_logs: false
 
 ## If enabled it will allow kubespray to attempt setup even if the distribution is not supported. For unsupported distributions this can lead to unexpected failures in some cases.
 allow_unsupported_distribution_setup: false
-
-# Configure IPv4 Stack networking
-ipv4_stack: true
-# Configure IPv6 Stack networking
-ipv6_stack: false
-
-# Kubernetes internal network for services
-kube_service_addresses: 10.233.0.0/18
-
-# Helm deployment

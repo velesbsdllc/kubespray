@@ -42,24 +42,24 @@ cilium_l2announcements: false
 # cilium_cpu_requests: 100m
 
 # Overlay Network Mode
-cilium_tunnel_mode: vxlan
+# cilium_tunnel_mode: vxlan
 
 # LoadBalancer Mode (snat/dsr/hybrid) Ref: https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/#dsr-mode
-cilium_loadbalancer_mode: snat
+# cilium_loadbalancer_mode: snat
 
 # Optional features
-cilium_enable_prometheus: true
+# cilium_enable_prometheus: false
 # Enable if you want to make use of hostPort mappings
-cilium_enable_portmap: true
+# cilium_enable_portmap: false
 # Monitor aggregation level (none/low/medium/maximum)
-cilium_monitor_aggregation: medium
+# cilium_monitor_aggregation: medium
 # The monitor aggregation flags determine which TCP flags which, upon the
 # first observation, cause monitor notifications to be generated.
 #
 # Only effective when monitor aggregation is set to "medium" or higher.
 # cilium_monitor_aggregation_flags: "all"
 # Kube Proxy Replacement mode (strict/partial)
-cilium_kube_proxy_replacement: partial
+# cilium_kube_proxy_replacement: partial
 
 # If upgrading from Cilium < 1.5, you may want to override some of these options
 # to prevent service disruptions. See also:
@@ -151,14 +151,14 @@ cilium_kube_proxy_replacement: partial
 
 # Hubble
 ### Enable Hubble without install
-cilium_enable_hubble: false
+# cilium_enable_hubble: false
 ### Enable Hubble-ui
 ### Installed by default when hubble is enabled. To disable set to false
-# cilium_enable_hubble_ui: true
+# cilium_enable_hubble_ui: "{{ cilium_enable_hubble }}"
 ### Enable Hubble Metrics
-# cilium_enable_hubble_metrics: true
+# cilium_enable_hubble_metrics: false
 ### if cilium_enable_hubble_metrics: true
-# cilium_hubble_metrics:
+# cilium_hubble_metrics: {}
 # - dns
 # - drop
 # - tcp
@@ -166,9 +166,9 @@ cilium_enable_hubble: false
 # - icmp
 # - http
 ### Enable Hubble install
-# cilium_hubble_install: true
+# cilium_hubble_install: false
 ### Enable auto generate certs if cilium_hubble_install: true
-# cilium_hubble_tls_generate: true
+# cilium_hubble_tls_generate: false
 
 ### Tune cilium_hubble_event_buffer_capacity & cilium_hubble_event_queue_size values to avoid dropping events when hubble is under heavy load
 ### Capacity of Hubble events buffer. The provided value must be one less than an integer power of two and no larger than 65535
@@ -179,11 +179,10 @@ cilium_enable_hubble: false
 
 # IP address management mode for v1.9+.
 # https://docs.cilium.io/en/v1.9/concepts/networking/ipam/
-cilium_ipam_mode: kubernetes
+# cilium_ipam_mode: kubernetes
 
 # Extra arguments for the Cilium agent
-cilium_agent_custom_args:
-  - "--tofqdns-min-ttl=3600"
+# cilium_agent_custom_args: []
 
 # For adding and mounting extra volumes to the cilium agent
 # cilium_agent_extra_volumes: []
@@ -200,10 +199,7 @@ cilium_agent_custom_args:
 ##  cilium_config_extra_vars:
 ##    var1: "value1"
 ##    var2: "value2"
-cilium_config_extra_vars:
-  enable-ipv4-fragment-tracking: "true"
-  k8s-require-ipv4-pod-cidr: "true"
-  enable-endpoint-routes: "true"
+# cilium_config_extra_vars: {}
 
 # For adding and mounting extra volumes to the cilium operator
 # cilium_operator_extra_volumes: []
@@ -249,7 +245,7 @@ cilium_config_extra_vars:
 # cilium_enable_ipv6_masquerade: true
 
 # -- Enable native IP masquerade support in eBPF
-cilium_enable_bpf_masquerade: true
+# cilium_enable_bpf_masquerade: false
 
 # -- Enable BGP Control Plane
 # cilium_enable_bgp_control_plane: false

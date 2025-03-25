@@ -17,7 +17,7 @@ kube_token_dir: "{{ kube_config_dir }}/tokens"
 kube_api_anonymous_auth: true
 
 ## Change this to use another Kubernetes version, e.g. a current beta release
-kube_version: v1.30.4
+kube_version: v1.32.2
 
 # Where the binaries will be downloaded.
 # Note: ensure that you've enough disk space (about 1G)
@@ -114,8 +114,7 @@ kube_pods_subnet_ipv6: fd85:ee78:d8a6:8607::1:0000/112
 kube_network_node_prefix_ipv6: 120
 
 # The port the API Server will be listening on.
-# kube_apiserver_ip: "{{ kube_service_subnets.split(',') | first | ansible.utils.ipaddr('net') | ansible.utils.ipaddr(1) | ansible.utils.ipaddr('address') }}"
-kube_apiserver_ip: "10.233.0.1"
+kube_apiserver_ip: "{{ kube_service_subnets.split(',') | first | ansible.utils.ipaddr('net') | ansible.utils.ipaddr(1) | ansible.utils.ipaddr('address') }}"
 kube_apiserver_port: 6443  # (https)
 
 # Kube-proxy proxyMode configuration.
@@ -167,7 +166,7 @@ dns_mode: coredns
 # Set manual server if using a custom cluster DNS server
 # manual_dns_server: 10.x.x.x
 # Enable nodelocal dns cache
-enable_nodelocaldns: false
+enable_nodelocaldns: true
 enable_nodelocaldns_secondary: false
 nodelocaldns_ip: 169.254.25.10
 nodelocaldns_health_port: 9254
@@ -213,10 +212,8 @@ resolvconf_mode: host_resolvconf
 # Deploy netchecker app to verify DNS resolve as an HTTP service
 deploy_netchecker: false
 # Ip address of the kubernetes skydns service
-# skydns_server: "{{ kube_service_subnets.split(',') | first | ansible.utils.ipaddr('net') | ansible.utils.ipaddr(3) | ansible.utils.ipaddr('address') }}"
-# skydns_server_secondary: "{{ kube_service_subnets.split(',') | first | ansible.utils.ipaddr('net') | ansible.utils.ipaddr(4) | ansible.utils.ipaddr('address') }}"
-skydns_server: "10.233.0.3"
-skydns_server_secondary: "10.233.0.4"
+skydns_server: "{{ kube_service_subnets.split(',') | first | ansible.utils.ipaddr('net') | ansible.utils.ipaddr(3) | ansible.utils.ipaddr('address') }}"
+skydns_server_secondary: "{{ kube_service_subnets.split(',') | first | ansible.utils.ipaddr('net') | ansible.utils.ipaddr(4) | ansible.utils.ipaddr('address') }}"
 dns_domain: "{{ cluster_name }}"
 
 ## Container runtime
