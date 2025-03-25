@@ -113,7 +113,7 @@ Note:
 - Core
   - [kubernetes](https://github.com/kubernetes/kubernetes) 1.32.3
   - [etcd](https://github.com/etcd-io/etcd) 3.5.16
-  - [docker](https://www.docker.com/) 26.1
+  - [docker](https://www.docker.com/) 28.0
   - [containerd](https://containerd.io/) 2.0.3
   - [cri-o](http://cri-o.io/) 1.32.0 (experimental: see [CRI-O Note](docs/CRI/cri-o.md). Only on fedora, ubuntu and centos based OS)
 - Network Plugin
@@ -129,8 +129,8 @@ Note:
 - Application
   - [cert-manager](https://github.com/jetstack/cert-manager) 1.15.3
   - [coredns](https://github.com/coredns/coredns) 1.11.3
-  - [ingress-nginx](https://github.com/kubernetes/ingress-nginx) 1.12.0
-  - [argocd](https://argoproj.github.io/) 2.11.0
+  - [ingress-nginx](https://github.com/kubernetes/ingress-nginx) 1.12.1
+  - [argocd](https://argoproj.github.io/) 2.14.5
   - [helm](https://helm.sh/) 3.16.4
   - [metallb](https://metallb.universe.tf/) 0.13.9
   - [registry](https://github.com/distribution/distribution) 2.8.1
