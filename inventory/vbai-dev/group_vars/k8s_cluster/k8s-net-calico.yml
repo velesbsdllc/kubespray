@@ -10,7 +10,7 @@ calico_cni_name: k8s-pod-network
 # peer_with_router: false
 
 # Enables Internet connectivity from containers
-# nat_outgoing: true
+nat_outgoing: true
 # nat_outgoing_ipv6: true
 
 # Enables Calico CNI "host-local" IPAM plugin
@@ -20,7 +20,7 @@ calico_cni_name: k8s-pod-network
 # calico_pool_name: "default-pool"
 
 # add default ippool blockSize
-calico_pool_blocksize: 26
+calico_pool_blocksize: 24
 
 # add default ippool CIDR (must be inside kube_pods_subnet, defaults to kube_pods_subnet otherwise)
 # calico_pool_cidr: 1.2.3.4/5
@@ -86,19 +86,18 @@ calico_pool_blocksize: 26
 # typha_max_connections_lower_limit: 300
 
 # Set calico network backend: "bird", "vxlan" or "none"
-# bird enable BGP routing, required for ipip and no encapsulation modes
-# calico_network_backend: vxlan
+calico_network_backend: vxlan
 
 # IP in IP and VXLAN is mutually exclusive modes.
 # set IP in IP encapsulation mode: "Always", "CrossSubnet", "Never"
 # calico_ipip_mode: 'Never'
 
 # set VXLAN encapsulation mode: "Always", "CrossSubnet", "Never"
-# calico_vxlan_mode: 'Always'
+calico_vxlan_mode: 'CrossSubnet'
 
 # set VXLAN port and VNI
-# calico_vxlan_vni: 4096
-# calico_vxlan_port: 4789
+calico_vxlan_vni: 4096
+calico_vxlan_port: 4789
 
 # Enable eBPF mode
 # calico_bpf_enabled: false
@@ -110,19 +109,19 @@ calico_pool_blocksize: 26
 # calico_ip_auto_method: "interface=eth.*"
 # calico_ip6_auto_method: "interface=eth.*"
 
-# Set FELIX_MTUIFACEPATTERN, Pattern used to discover the host’s interface for MTU auto-detection.
+# Set FELIX_MTUIFACEPATTERN, Pattern used to discover the host's interface for MTU auto-detection.
 # see https://projectcalico.docs.tigera.io/reference/felix/configuration
 # calico_felix_mtu_iface_pattern: "^((en|wl|ww|sl|ib)[opsx].*|(eth|wlan|wwan).*)"
 
-# Choose the iptables insert mode for Calico: "Insert" or "Append".
-# calico_felix_chaininsertmode: Insert
+# Choose the iptables insert mode for Calico: "Insert" or "Append"
+calico_felix_chaininsertmode: Insert
 
 # If you want use the default route interface when you use multiple interface with dynamique route (iproute2)
 # see https://docs.projectcalico.org/reference/node/configuration : FELIX_DEVICEROUTESOURCEADDRESS
-# calico_use_default_route_src_ipaddr: false
+calico_use_default_route_src_ipaddr: true
 
 # Enable calico traffic encryption with wireguard
-# calico_wireguard_enabled: false
+calico_wireguard_enabled: false
 
 # Under certain situations liveness and readiness probes may need tunning
 # calico_node_livenessprobe_timeout: 10
